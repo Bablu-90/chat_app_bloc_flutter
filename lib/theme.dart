@@ -1,50 +1,35 @@
-
+import 'package:chat_app_bloc_flutter/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'constants.dart';
+final appBarTheme= AppBarTheme(
+  centerTitle: false,
+  elevation: 0,
+  backgroundColor: Colors.white,
+);
 
-ThemeData lightThemeData(BuildContext context) {
-  return ThemeData.light().copyWith(
-    primaryColor: kPrimaryColor,
-    scaffoldBackgroundColor: Colors.white,
-    appBarTheme: appBarTheme,
-    iconTheme: IconThemeData(color: kContentColorLightTheme),
-    textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)
-        .apply(bodyColor: kContentColorLightTheme),
-    colorScheme: ColorScheme.light(
-      primary: kPrimaryColor,
-      secondary: kSecondaryColor,
-      error: kErrorColor,
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
-      selectedItemColor: kContentColorLightTheme.withOpacity(0.7),
-      unselectedItemColor: kContentColorLightTheme.withOpacity(0.32),
-      selectedIconTheme: IconThemeData(color: kPrimaryColor),
-    ),
-  );
+ThemeData lightTheme(BuildContext context)=> ThemeData.light().copyWith(
+  primaryColor:kPrimaryColor,
+  scaffoldBackgroundColor: Colors.white,
+  appBarTheme: appBarTheme,
+  iconTheme: IconThemeData(color: kIconLight),
+  textTheme: GoogleFonts.comfortaaTextTheme(Theme.of(context).textTheme).apply(
+    displayColor: Colors.black,
+  ),
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+);
+
+ThemeData darkTheme(BuildContext context)=> ThemeData.dark().copyWith(
+  primaryColor:kPrimaryColor,
+  scaffoldBackgroundColor: Colors.black,
+  appBarTheme: appBarTheme.copyWith(backgroundColor: kAppBarDark),
+  iconTheme: IconThemeData(color: Colors.black),
+  textTheme: GoogleFonts.comfortaaTextTheme(Theme.of(context).textTheme).apply(
+    displayColor: Colors.white,
+  ),
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+);
+
+bool isLightTheme(BuildContext context){
+  return MediaQuery.of(context).platformBrightness==Brightness.light;
 }
-
-ThemeData darkThemeData(BuildContext context) {
-  return ThemeData.dark().copyWith(
-    primaryColor: kPrimaryColor,
-    scaffoldBackgroundColor: kContentColorLightTheme,
-    appBarTheme: appBarTheme,
-    iconTheme: IconThemeData(color: kContentColorDarkTheme),
-    textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)
-        .apply(bodyColor: kContentColorDarkTheme),
-    colorScheme: ColorScheme.dark().copyWith(
-      primary: kPrimaryColor,
-      secondary: kSecondaryColor,
-      error: kErrorColor,
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: kContentColorLightTheme,
-        selectedItemColor: Colors.white70,
-        unselectedItemColor: kContentColorDarkTheme.withOpacity(0.32),
-        selectedIconTheme: IconThemeData(color: kPrimaryColor)),
-  );
-}
-
-final appBarTheme = AppBarTheme(centerTitle: false, elevation: 0);

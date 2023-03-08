@@ -1,16 +1,20 @@
 class UserModel {
+
   String id;
   String name;
   DateTime lastSeen;
+  bool active;
   String email;
-  String profilePicLink;
+
 
   UserModel(
-      {required this.id,
+      {
+      required this.id,
       required this.name,
       required this.lastSeen,
       required this.email,
-      required this.profilePicLink});
+      required this.active
+      });
 
 
   //fromJson
@@ -18,9 +22,10 @@ class UserModel {
     return UserModel(
       id: json['id'],
       name: json['name'],
+      active: json['active'],
       lastSeen: json['lastSeen'],
       email: json['email'],
-      profilePicLink: json['profilePicLink'],
+
     );
   }
 
@@ -31,6 +36,6 @@ class UserModel {
         'name': name,
         'lastSeen': lastSeen,
         'email': email,
-        'profilePicLink': profilePicLink,
+        'active': active,
       };
 }
